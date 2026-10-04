@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Configure CSS Variables & Custom Styles -->
+    <!-- Configure Custom CSS Variables & Styling rules -->
     <style>
         :root {
             --color-forest-green: #173F35;
@@ -30,17 +30,18 @@
             overflow-x: hidden;
         }
 
-        /* Initial locked scroll state for opening cover */
+        /* Scroll Lock for Intro Cover */
         body.scroll-locked {
-            overflow: hidden;
+            overflow: hidden !important;
             height: 100vh;
+            touch-action: none;
         }
 
         .font-serif-editorial {
             font-family: 'Cormorant Garamond', Georgia, serif;
         }
 
-        /* Color Utility Classes */
+        /* Utility Classes */
         .bg-forest { background-color: var(--color-forest-green); }
         .bg-malachite { background-color: var(--color-malachite-green); }
         .bg-ivory { background-color: var(--color-warm-ivory); }
@@ -105,7 +106,7 @@
             E & A
         </a>
 
-        <!-- Desktop Menu Items -->
+        <!-- Desktop Navigation Items -->
         <div class="hidden md:flex items-center space-x-8 text-xs font-medium tracking-[0.2em] uppercase">
             <a href="#story" id="nav-story" class="nav-link hover:text-[#356B50] transition-colors">STORY</a>
             <a href="#the-day" id="nav-the-day" class="nav-link hover:text-[#356B50] transition-colors">THE DAY</a>
@@ -197,7 +198,7 @@
                 </p>
 
                 <div class="pt-4 flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-6">
-                    <button id="explore-btn" class="inline-flex items-center space-x-4 bg-[#173F35] text-[#FFFDF8] px-8 py-4 hover:bg-[#356B50] transition-all duration-300 text-xs tracking-[0.25em] uppercase font-medium group cursor-pointer">
+                    <button id="explore-btn" class="inline-flex items-center space-x-4 bg-[#173F35] text-[#FFFDF8] px-8 py-4 hover:bg-[#356B50] transition-all duration-300 text-xs tracking-[0.25em] uppercase font-medium group cursor-pointer shadow-lg">
                         <span>EXPLORE INVITATION</span>
                         <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
@@ -267,7 +268,7 @@
             <!-- Story Grid -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
-                <!-- Narrative Write-Up -->
+                <!-- First-Person Narrative Write-Up -->
                 <div class="lg:col-span-6 reveal-element space-y-6">
                     <h3 class="text-3xl md:text-5xl font-serif-editorial italic leading-tight text-[#F7F4E9]">
                         IT STARTED WITH COFFEE.
@@ -369,7 +370,7 @@
 
 
     <!-- SECTION 03 — THE NEXT CHAPTER -->
-    <section class="py-20 md:py-28 bg-[#173F35] text-[#FFFDF8] border-t border-[#FFFDF8]/10">
+    <section id="next-chapter" class="py-20 md:py-28 bg-[#173F35] text-[#FFFDF8] border-t border-[#FFFDF8]/10">
         <div class="max-w-4xl mx-auto px-6 text-center reveal-element space-y-8">
             <span class="text-xs tracking-[0.35em] text-[#B69A62] uppercase font-semibold block">03 — THE NEXT CHAPTER</span>
 
@@ -529,7 +530,7 @@
     </section>
 
 
-    <!-- SECTION: DRESS CODE -->
+    <!-- SECTION: DETAILS & DRESS CODE -->
     <section id="details" class="py-24 bg-[#F7F4E9] text-[#173F35] border-t border-b border-[#173F35]/10">
         <div class="max-w-5xl mx-auto px-6 md:px-12">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -808,15 +809,24 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
+            let isUnlocked = false;
+
             // 1. Explore Invitation Unlock Scroll Handler
             const exploreBtn = document.getElementById('explore-btn');
+
+            function unlockPageScroll() {
+                if (!isUnlocked) {
+                    isUnlocked = true;
+                    document.body.classList.remove('scroll-locked');
+                }
+            }
+
             if (exploreBtn) {
                 exploreBtn.addEventListener('click', function(e) {
                     e.preventDefault();
-                    // Unlock page scroll
-                    document.body.classList.remove('scroll-locked');
+                    unlockPageScroll();
 
-                    // Smooth transition scroll down to story
+                    // Smooth transition scroll down to story section
                     const storySection = document.getElementById('story');
                     if (storySection) {
                         storySection.scrollIntoView({ behavior: 'smooth' });
@@ -824,7 +834,15 @@
                 });
             }
 
-            // 2. Active Menu Line Highlight Logic
+            // Also unlock scroll if user clicks any navigation link directly
+            const allNavLinks = document.querySelectorAll('.nav-link, .mobile-link, a[href^="#"]');
+            allNavLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    unlockPageScroll();
+                });
+            });
+
+            // 2. Active Menu Line Highlight Logic across full bi-directional scrolling
             const navLinks = {
                 'story': document.getElementById('nav-story'),
                 'the-day': document.getElementById('nav-the-day'),
@@ -837,7 +855,7 @@
 
             const navObserverOptions = {
                 root: null,
-                rootMargin: '-20% 0px -70% 0px',
+                rootMargin: '-30% 0px -50% 0px',
                 threshold: 0
             };
 
@@ -846,13 +864,13 @@
                     if (entry.isIntersecting) {
                         const id = entry.target.getAttribute('id');
 
-                        // Remove active class from all desktop nav links
+                        // Remove active state from all desktop nav links
                         Object.values(navLinks).forEach(link => {
                             if (link) link.classList.remove('active-nav');
                         });
 
-                        // Story menu highlight covers story, proposal, and next chapter sections
-                        if (id === 'story' || id === 'proposal') {
+                        // Story highlight group: story, proposal, next-chapter
+                        if (id === 'story' || id === 'proposal' || id === 'next-chapter') {
                             if (navLinks['story']) navLinks['story'].classList.add('active-nav');
                         } else if (navLinks[id]) {
                             navLinks[id].classList.add('active-nav');
@@ -865,7 +883,7 @@
                 navObserver.observe(section);
             });
 
-            // 3. Mobile Menu Overlay
+            // 3. Mobile Navigation Menu Overlay
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
             const mobileMenuClose = document.getElementById('mobile-menu-close');
             const mobileMenu = document.getElementById('mobile-menu');
@@ -884,7 +902,7 @@
 
             mobileLinks.forEach(link => {
                 link.addEventListener('click', function() {
-                    document.body.classList.remove('scroll-locked');
+                    unlockPageScroll();
                     closeMobileMenu();
                 });
             });
@@ -908,7 +926,7 @@
                 revealObserver.observe(el);
             });
 
-            // 5. RSVP Form
+            // 5. RSVP Form Handling
             const rsvpForm = document.getElementById('rsvp-form');
             const rsvpSuccess = document.getElementById('rsvp-success');
             const resetRsvpBtn = document.getElementById('reset-rsvp-btn');
@@ -934,7 +952,7 @@
                 });
             }
 
-            // 6. Back to Top
+            // 6. Back to Top Smooth Scroll
             const backToTopBtn = document.getElementById('back-to-top');
             if (backToTopBtn) {
                 backToTopBtn.addEventListener('click', function() {
