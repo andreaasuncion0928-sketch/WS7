@@ -30,13 +30,6 @@
             overflow-x: hidden;
         }
 
-        /* Scroll Lock for Intro Cover */
-        body.scroll-locked {
-            overflow: hidden !important;
-            height: 100vh;
-            touch-action: none;
-        }
-
         .font-serif-editorial {
             font-family: 'Cormorant Garamond', Georgia, serif;
         }
@@ -98,7 +91,7 @@
         }
     </style>
 </head>
-<body class="antialiased selection:bg-[#356B50] selection:text-[#FFFDF8] scroll-locked">
+<body class="antialiased selection:bg-[#356B50] selection:text-[#FFFDF8]">
 
     <!-- EDITORIAL FIXED NAVIGATION BAR -->
     <nav id="main-nav" class="fixed top-0 left-0 w-full z-40 px-6 py-5 md:px-12 md:py-6 flex justify-between items-center transition-all duration-500 backdrop-blur-md bg-[#F7F4E9]/80 text-[#173F35] border-b border-[#173F35]/10">
@@ -198,12 +191,12 @@
                 </p>
 
                 <div class="pt-4 flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-6">
-                    <button id="explore-btn" class="inline-flex items-center space-x-4 bg-[#173F35] text-[#FFFDF8] px-8 py-4 hover:bg-[#356B50] transition-all duration-300 text-xs tracking-[0.25em] uppercase font-medium group cursor-pointer shadow-lg">
+                    <a href="#story" id="explore-btn" class="inline-flex items-center space-x-4 bg-[#173F35] text-[#FFFDF8] px-8 py-4 hover:bg-[#356B50] transition-all duration-300 text-xs tracking-[0.25em] uppercase font-medium group cursor-pointer shadow-lg">
                         <span>EXPLORE INVITATION</span>
                         <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                         </svg>
-                    </button>
+                    </a>
                 </div>
             </div>
 
@@ -235,7 +228,7 @@
         <div class="w-full border-t border-[#173F35]/20 pt-4 flex flex-col sm:flex-row justify-between items-center text-[10px] md:text-xs tracking-[0.2em] uppercase text-[#173F35]/70 gap-2">
             <div>VOLUME 01 • ISSUE 2028</div>
             <div class="animate-bounce flex items-center space-x-2">
-                <span>CLICK EXPLORE TO READ</span>
+                <span>SCROLL OR CLICK TO EXPLORE</span>
                 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
             </div>
             <div>EXCLUSIVE EDITION</div>
@@ -261,7 +254,7 @@
                     </h2>
                 </div>
                 <p class="text-xs uppercase tracking-[0.2em] text-[#FFFDF8]/60 mt-4 md:mt-0">
-                    MAKATI CITY • COFFEE & MEMORIES
+                    COFFEE & MEMORIES
                 </p>
             </div>
 
@@ -277,7 +270,7 @@
 
                     <!-- Warm First-Person Narrative -->
                     <p class="text-sm md:text-base leading-relaxed text-[#FFFDF8]/80 font-light">
-                        We first met through mutual friends at a cozy coffee shop in Makati. For a long time, quiet feelings stayed silently kept inside — unspoken, unhurried, but gently growing beneath every conversation. Then, in one quiet shift of time, everything suddenly sparked into motion.
+                        For a long time, quiet feelings stayed silently kept inside — unspoken, unhurried, but gently growing beneath every conversation. Then, in one quiet shift of time, everything suddenly sparked into motion.
                     </p>
 
                     <p class="text-sm md:text-base leading-relaxed text-[#FFFDF8]/80 font-light">
@@ -379,13 +372,13 @@
             </h2>
 
             <p class="text-lg md:text-2xl font-serif-editorial italic text-[#F7F4E9] max-w-2xl mx-auto leading-relaxed">
-                What started with coffee became a life we chose together.
+                "What started with coffee became a life we chose together."
             </p>
 
             <div class="w-12 h-[1px] bg-[#B69A62] mx-auto"></div>
 
             <p class="text-sm md:text-base font-light text-[#FFFDF8]/80 max-w-xl mx-auto leading-relaxed">
-                Now, Elena and Adrian are beginning their next chapter — and they would love to celebrate it with the people who have been part of their story.
+                Now, we are beginning our next chapter — and we would love to celebrate it with the people who have been part of our story.
             </p>
         </div>
     </section>
@@ -608,7 +601,7 @@
                         <span class="text-4xl font-serif-editorial text-[#B69A62] block">01</span>
                         <h3 class="text-2xl font-serif-editorial tracking-wider uppercase font-medium">THE BEGINNING</h3>
                         <p class="text-xs leading-relaxed text-[#173F35]/80 font-light">
-                            Captured moments from early coffee dates in Makati, where conversations stretched into hours and quiet realization grew.
+                            Captured moments from early coffee dates, where conversations stretched into hours and quiet realization grew.
                         </p>
                     </div>
                 </div>
@@ -809,38 +802,17 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
-            let isUnlocked = false;
-
-            // 1. Explore Invitation Unlock Scroll Handler
+            // 1. Smooth Transition Scroll from Explore Button
             const exploreBtn = document.getElementById('explore-btn');
-
-            function unlockPageScroll() {
-                if (!isUnlocked) {
-                    isUnlocked = true;
-                    document.body.classList.remove('scroll-locked');
-                }
-            }
-
             if (exploreBtn) {
                 exploreBtn.addEventListener('click', function(e) {
                     e.preventDefault();
-                    unlockPageScroll();
-
-                    // Smooth transition scroll down to story section
                     const storySection = document.getElementById('story');
                     if (storySection) {
                         storySection.scrollIntoView({ behavior: 'smooth' });
                     }
                 });
             }
-
-            // Also unlock scroll if user clicks any navigation link directly
-            const allNavLinks = document.querySelectorAll('.nav-link, .mobile-link, a[href^="#"]');
-            allNavLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    unlockPageScroll();
-                });
-            });
 
             // 2. Active Menu Line Highlight Logic across full bi-directional scrolling
             const navLinks = {
@@ -902,7 +874,6 @@
 
             mobileLinks.forEach(link => {
                 link.addEventListener('click', function() {
-                    unlockPageScroll();
                     closeMobileMenu();
                 });
             });
