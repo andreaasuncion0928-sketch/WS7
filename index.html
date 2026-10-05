@@ -119,7 +119,7 @@
 </head>
 <body class="antialiased selection:bg-[#356B50] selection:text-[#FFFDF8]">
 
-    <!-- AUDIO ELEMENT FOR BACKGROUND MUSIC -->
+    <!-- AUDIO ELEMENT FOR BACKGROUND MUSIC (INSTANT AUDIO PRELOAD) -->
     <audio id="bg-audio" loop preload="auto">
         <source src="song.mp3" type="audio/mpeg">
     </audio>
@@ -555,6 +555,9 @@
 
     <!-- JAVASCRIPT NAVIGATION & AUDIO LOGIC -->
     <script>
+        // Adjust this seconds value if you want to skip further into the song (e.g. 3.5 = 3.5 seconds)
+        const AUDIO_START_OFFSET = 3.5;
+
         // Page switching navigation function
         function navigateToPage(pageId) {
             const pages = document.querySelectorAll('.editorial-page');
@@ -589,12 +592,18 @@
             closeMobileMenu();
         }
 
-        // Start Experience & Play Background Audio
+        // Start Experience & Play Background Audio Instantly
         function startInvitationExperience() {
             const audio = document.getElementById('bg-audio');
             if (audio) {
+                try {
+                    audio.currentTime = AUDIO_START_OFFSET; // Jump intro instrumental straight to lyrics
+                } catch(e) {
+                    console.log('Audio seek before play');
+                }
+                
                 audio.play().catch(err => {
-                    console.log('Audio autoplay prevented by browser settings:', err);
+                    console.log('Audio playback prevented by browser:', err);
                 });
             }
             navigateToPage('story-page');
