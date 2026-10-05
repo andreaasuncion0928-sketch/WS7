@@ -82,7 +82,7 @@
             width: 100%;
         }
 
-        /* FIXED 3D BOOK FLIP ANIMATION STYLES */
+        /* 3D BOOK FLIP ANIMATION STYLES */
         .book-container {
             perspective: 2000px;
         }
@@ -119,8 +119,19 @@
 </head>
 <body class="antialiased selection:bg-[#356B50] selection:text-[#FFFDF8]">
 
+    <!-- AUDIO ELEMENT FOR BACKGROUND MUSIC -->
+    <audio id="bg-audio" loop preload="auto">
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- FLOATING AUDIO CONTROLLER -->
+    <button id="audio-toggle-btn" onclick="toggleAudio()" class="fixed bottom-6 right-6 z-50 bg-[#173F35] text-[#FFFDF8] border border-[#FFFDF8]/20 px-4 py-2 rounded-full text-[10px] tracking-[0.2em] uppercase font-medium flex items-center space-x-2 shadow-2xl hover:bg-[#356B50] transition-colors focus:outline-none">
+        <span id="audio-icon">🎵</span>
+        <span id="audio-status">SOUND OFF</span>
+    </button>
+
     <!-- EDITORIAL FIXED NAVIGATION BAR -->
-    <nav id="main-nav" class="fixed top-0 left-0 w-full z-50 px-6 py-5 md:px-12 md:py-6 flex justify-between items-center transition-all duration-500 backdrop-blur-md bg-[#F7F4E9]/80 text-[#173F35] border-b border-[#173F35]/10">
+    <nav id="main-nav" class="fixed top-0 left-0 w-full z-50 px-6 py-4 md:px-12 md:py-5 flex justify-between items-center transition-all duration-500 backdrop-blur-md bg-[#F7F4E9]/80 text-[#173F35] border-b border-[#173F35]/10">
         <a href="javascript:void(0)" onclick="navigateToPage('cover-page')" class="font-serif-editorial text-xl font-bold tracking-widest uppercase hover:opacity-70 transition-opacity">
             E & A
         </a>
@@ -175,45 +186,41 @@
         </div>
     </div>
 
-    <!-- PAGE 00: OPENING COVER -->
-    <div id="cover-page" class="editorial-page active-page bg-[#F7F4E9] text-[#173F35] flex flex-col justify-between p-6 md:p-12 lg:p-16 pt-28">
-        <div class="w-full border-b border-[#173F35]/20 pb-4 flex justify-between items-end">
+    <!-- PAGE 00: OPENING COVER (STREAMLINED & LESSENED LAYOUT) -->
+    <div id="cover-page" class="editorial-page active-page bg-[#F7F4E9] text-[#173F35] flex flex-col justify-between p-6 md:p-10 pt-20">
+        <div class="w-full border-b border-[#173F35]/20 pb-2 flex justify-between items-end">
             <div>
-                <p class="text-[10px] md:text-xs font-medium tracking-[0.3em] uppercase text-[#356B50]">THE GREEN EDITORIAL • SPECIAL INVITATION ISSUE</p>
-                <h1 class="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-serif-editorial font-light tracking-tight leading-none mt-1">
+                <p class="text-[9px] md:text-[10px] font-medium tracking-[0.3em] uppercase text-[#356B50]">THE GREEN EDITORIAL • SPECIAL INVITATION</p>
+                <h1 class="text-2xl sm:text-4xl md:text-5xl font-serif-editorial font-light tracking-tight leading-none mt-1">
                     THE WEDDING
                 </h1>
             </div>
             <div class="text-right hidden sm:block">
-                <span class="text-xs tracking-widest uppercase block text-[#173F35]">MANILA, PHILIPPINES</span>
-                <span class="text-xs tracking-widest uppercase block text-[#B69A62] font-semibold">JANUARY 31, 2028</span>
+                <span class="text-[10px] tracking-widest uppercase block text-[#173F35]">MANILA, PHILIPPINES</span>
+                <span class="text-[10px] tracking-widest uppercase block text-[#B69A62] font-semibold">JANUARY 31, 2028</span>
             </div>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 my-auto items-center py-8">
-            <div class="lg:col-span-5 space-y-6 z-10">
-                <div class="inline-block border-l-2 border-[#173F35] pl-4 py-1">
-                    <p class="text-xs uppercase tracking-[0.25em] font-semibold text-[#356B50]">A DIGITAL PUBLICATION</p>
-                </div>
-
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 my-auto items-center py-4">
+            <div class="lg:col-span-5 space-y-4 z-10">
                 <div class="space-y-0">
-                    <h2 class="text-6xl sm:text-8xl md:text-9xl font-serif-editorial tracking-tighter leading-none italic font-normal">
+                    <h2 class="text-5xl sm:text-7xl md:text-8xl font-serif-editorial tracking-tighter leading-none italic font-normal">
                         Elena
                     </h2>
-                    <p class="text-2xl font-serif-editorial font-light tracking-widest my-[-10px] pl-12 text-[#B69A62]">&</p>
-                    <h2 class="text-6xl sm:text-8xl md:text-9xl font-serif-editorial tracking-tighter leading-none pl-16 font-normal">
+                    <p class="text-xl font-serif-editorial font-light tracking-widest my-[-8px] pl-8 text-[#B69A62]">&</p>
+                    <h2 class="text-5xl sm:text-7xl md:text-8xl font-serif-editorial tracking-tighter leading-none pl-12 font-normal">
                         Adrian
                     </h2>
                 </div>
 
-                <p class="text-sm md:text-base font-serif-editorial italic text-[#173F35]/80 max-w-sm pt-4 border-t border-[#173F35]/10">
+                <p class="text-xs md:text-sm font-serif-editorial italic text-[#173F35]/80 pt-2 border-t border-[#173F35]/10">
                     "A Love Story, One Cup at a Time"
                 </p>
 
-                <div class="pt-4">
-                    <button onclick="navigateToPage('story-page')" class="inline-flex items-center space-x-4 bg-[#173F35] text-[#FFFDF8] px-8 py-4 hover:bg-[#356B50] transition-all duration-300 text-xs tracking-[0.25em] uppercase font-medium group cursor-pointer shadow-lg focus:outline-none">
+                <div class="pt-2">
+                    <button onclick="startInvitationExperience()" class="inline-flex items-center space-x-3 bg-[#173F35] text-[#FFFDF8] px-6 py-3 hover:bg-[#356B50] transition-all duration-300 text-[10px] tracking-[0.25em] uppercase font-medium group cursor-pointer shadow-md focus:outline-none">
                         <span>EXPLORE INVITATION</span>
-                        <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                         </svg>
                     </button>
@@ -221,24 +228,23 @@
             </div>
 
             <div class="lg:col-span-7 relative">
-                <div class="relative z-10 overflow-hidden shadow-2xl bg-[#173F35]">
+                <div class="relative z-10 overflow-hidden shadow-xl bg-[#173F35]">
                     <img src="intro.jpeg"
                          onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1200';"
                          alt="Elena & Adrian Cover Image"
-                         class="w-full h-[380px] sm:h-[500px] object-cover object-center filter contrast-105">
+                         class="w-full h-[300px] sm:h-[400px] object-cover object-center filter contrast-105">
 
-                    <div class="absolute bottom-6 left-6 bg-[#173F35]/90 text-[#FFFDF8] backdrop-blur-md p-4 max-w-xs border border-[#FFFDF8]/20">
-                        <p class="text-[9px] tracking-[0.3em] text-[#B69A62] uppercase font-semibold">COVER FEATURE</p>
-                        <p class="font-serif-editorial text-lg italic leading-tight mt-1">Saturday, January 31, 2028</p>
-                        <p class="text-[10px] tracking-wider text-[#FFFDF8]/70 uppercase mt-1">Manila, Philippines</p>
+                    <div class="absolute bottom-4 left-4 bg-[#173F35]/90 text-[#FFFDF8] backdrop-blur-md p-3 max-w-xs border border-[#FFFDF8]/20">
+                        <p class="font-serif-editorial text-base italic leading-tight">Saturday, January 31, 2028</p>
+                        <p class="text-[9px] tracking-wider text-[#FFFDF8]/70 uppercase mt-0.5">Manila, Philippines</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="w-full border-t border-[#173F35]/20 pt-4 pb-2 flex justify-between items-center text-[10px] md:text-xs tracking-[0.2em] uppercase text-[#173F35]/70">
+        <div class="w-full border-t border-[#173F35]/20 pt-2 pb-1 flex justify-between items-center text-[9px] md:text-[10px] tracking-[0.2em] uppercase text-[#173F35]/70">
             <div>VOLUME 01 • ISSUE 2028</div>
-            <div class="text-[#356B50] font-medium">CLICK 'EXPLORE INVITATION' OR MENU TO NAVIGATE</div>
+            <div class="text-[#356B50] font-medium">CLICK 'EXPLORE INVITATION' TO BEGIN</div>
         </div>
     </div>
 
@@ -526,7 +532,7 @@
         </div>
     </div>
 
-    <!-- PAGE 05: RSVP WITH QR CODE ONLY (FORM REMOVED) -->
+    <!-- PAGE 05: RSVP WITH QR CODE ONLY -->
     <div id="rsvp-page" class="editorial-page bg-[#173F35] text-[#FFFDF8] pt-28 px-6 md:px-12 flex flex-col justify-center items-center">
         <div class="max-w-xl mx-auto w-full py-8 text-center space-y-6">
             <div class="space-y-2">
@@ -548,7 +554,7 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT NAVIGATION & INTERACTIVE STACK FLIP LOGIC -->
+    <!-- JAVASCRIPT NAVIGATION & AUDIO LOGIC -->
     <script>
         // Page switching navigation function
         function navigateToPage(pageId) {
@@ -582,6 +588,47 @@
             }
 
             closeMobileMenu();
+        }
+
+        // Start Experience & Play Background Audio
+        function startInvitationExperience() {
+            const audio = document.getElementById('bg-audio');
+            if (audio) {
+                audio.play().then(() => {
+                    updateAudioUI(true);
+                }).catch(err => {
+                    console.log('Audio autoplay prevented:', err);
+                });
+            }
+            navigateToPage('story-page');
+        }
+
+        // Toggle Audio Play/Pause
+        function toggleAudio() {
+            const audio = document.getElementById('bg-audio');
+            if (!audio) return;
+
+            if (audio.paused) {
+                audio.play();
+                updateAudioUI(true);
+            } else {
+                audio.pause();
+                updateAudioUI(false);
+            }
+        }
+
+        function updateAudioUI(isPlaying) {
+            const statusEl = document.getElementById('audio-status');
+            const iconEl = document.getElementById('audio-icon');
+            if (statusEl && iconEl) {
+                if (isPlaying) {
+                    statusEl.textContent = 'SOUND ON';
+                    iconEl.textContent = '🔊';
+                } else {
+                    statusEl.textContent = 'SOUND OFF';
+                    iconEl.textContent = '🎵';
+                }
+            }
         }
 
         // Corrected Book Flip Logic (0 = Cover, 1 to 10 = Images)
