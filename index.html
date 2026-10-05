@@ -139,45 +139,50 @@
         </div>
 
         <!-- Desktop Navigation Items -->
-        <div class="hidden md:flex items-center space-x-8 text-xs font-medium tracking-[0.2em] uppercase">
+        <div class="hidden lg:flex items-center space-x-7 text-xs font-medium tracking-[0.2em] uppercase">
             <button onclick="navigateToPage('story-page')" id="nav-story" class="nav-link hover:text-[#356B50] transition-colors focus:outline-none">STORY</button>
             <button onclick="navigateToPage('day-page')" id="nav-day" class="nav-link hover:text-[#356B50] transition-colors focus:outline-none">THE DAY</button>
             <button onclick="navigateToPage('details-page')" id="nav-details" class="nav-link hover:text-[#356B50] transition-colors focus:outline-none">DETAILS</button>
+            <button onclick="navigateToPage('entourage-page')" id="nav-entourage" class="nav-link hover:text-[#356B50] transition-colors focus:outline-none">ENTOURAGE</button>
             <button onclick="navigateToPage('moments-page')" id="nav-moments" class="nav-link hover:text-[#356B50] transition-colors focus:outline-none">MOMENTS</button>
             <button onclick="navigateToPage('rsvp-page')" id="nav-rsvp" class="px-5 py-2 border border-[#173F35] hover:bg-[#173F35] hover:text-[#FFFDF8] transition-all duration-300 focus:outline-none">RSVP</button>
         </div>
 
         <!-- Mobile Menu Toggle Button -->
-        <button id="mobile-menu-btn" class="md:hidden text-xs tracking-widest uppercase font-semibold focus:outline-none py-1 px-2 border border-[#173F35]">
+        <button id="mobile-menu-btn" class="lg:hidden text-xs tracking-widest uppercase font-semibold focus:outline-none py-1 px-2 border border-[#173F35]">
             MENU
         </button>
     </nav>
 
     <!-- Mobile Navigation Overlay -->
-    <div id="mobile-menu" class="fixed inset-0 bg-[#173F35] text-[#FFFDF8] z-50 flex flex-col justify-between p-8 transform translate-x-full transition-transform duration-500 ease-in-out md:hidden">
+    <div id="mobile-menu" class="fixed inset-0 bg-[#173F35] text-[#FFFDF8] z-50 flex flex-col justify-between p-8 transform translate-x-full transition-transform duration-500 ease-in-out lg:hidden">
         <div class="flex justify-between items-center border-b border-[#FFFDF8]/20 pb-6">
             <span class="font-serif-editorial text-2xl tracking-wider">ELENA & ADRIAN</span>
             <button id="mobile-menu-close" class="text-xs tracking-widest uppercase py-1 px-3 border border-[#FFFDF8]">CLOSE</button>
         </div>
 
-        <div class="flex flex-col space-y-6 text-xl font-serif-editorial tracking-widest my-auto">
-            <button onclick="navigateToPage('story-page')" class="mobile-link text-left border-b border-[#FFFDF8]/10 pb-3 flex justify-between items-center w-full">
+        <div class="flex flex-col space-y-5 text-xl font-serif-editorial tracking-widest my-auto">
+            <button onclick="navigateToPage('story-page')" class="mobile-link text-left border-b border-[#FFFDF8]/10 pb-2.5 flex justify-between items-center w-full">
                 <span>STORY</span>
                 <span class="text-xs font-sans tracking-normal opacity-60">Coffee & Beginnings</span>
             </button>
-            <button onclick="navigateToPage('day-page')" class="mobile-link text-left border-b border-[#FFFDF8]/10 pb-3 flex justify-between items-center w-full">
+            <button onclick="navigateToPage('day-page')" class="mobile-link text-left border-b border-[#FFFDF8]/10 pb-2.5 flex justify-between items-center w-full">
                 <span>THE DAY</span>
                 <span class="text-xs font-sans tracking-normal opacity-60">Schedule & Venues</span>
             </button>
-            <button onclick="navigateToPage('details-page')" class="mobile-link text-left border-b border-[#FFFDF8]/10 pb-3 flex justify-between items-center w-full">
+            <button onclick="navigateToPage('details-page')" class="mobile-link text-left border-b border-[#FFFDF8]/10 pb-2.5 flex justify-between items-center w-full">
                 <span>DETAILS</span>
                 <span class="text-xs font-sans tracking-normal opacity-60">Dress Code & Info</span>
             </button>
-            <button onclick="navigateToPage('moments-page')" class="mobile-link text-left border-b border-[#FFFDF8]/10 pb-3 flex justify-between items-center w-full">
+            <button onclick="navigateToPage('entourage-page')" class="mobile-link text-left border-b border-[#FFFDF8]/10 pb-2.5 flex justify-between items-center w-full">
+                <span>ENTOURAGE</span>
+                <span class="text-xs font-sans tracking-normal opacity-60">Wedding Party</span>
+            </button>
+            <button onclick="navigateToPage('moments-page')" class="mobile-link text-left border-b border-[#FFFDF8]/10 pb-2.5 flex justify-between items-center w-full">
                 <span>MOMENTS</span>
                 <span class="text-xs font-sans tracking-normal opacity-60">Photo Essay</span>
             </button>
-            <button onclick="navigateToPage('rsvp-page')" class="mobile-link text-left border-b border-[#FFFDF8]/10 pb-3 flex justify-between items-center w-full">
+            <button onclick="navigateToPage('rsvp-page')" class="mobile-link text-left border-b border-[#FFFDF8]/10 pb-2.5 flex justify-between items-center w-full">
                 <span>RSVP</span>
                 <span class="text-xs font-sans tracking-normal text-[#B69A62]">By Dec 15, 2027</span>
             </button>
@@ -188,7 +193,7 @@
         </div>
     </div>
 
-    <!-- PAGE 00: OPENING COVER (THE GREEN EDITORIAL TEXT REMOVED) -->
+    <!-- PAGE 00: OPENING COVER -->
     <div id="cover-page" class="editorial-page active-page bg-[#F7F4E9] text-[#173F35] flex flex-col justify-between p-6 md:p-12 lg:p-16 pt-32 md:pt-36">
         <div class="w-full border-b border-[#173F35]/20 pb-4 flex justify-between items-end mt-2">
             <div>
@@ -403,7 +408,7 @@
         </div>
     </div>
 
-    <!-- PAGE 03: DETAILS / DRESS CODE (GREEN AND WHITE PALETTE SPECIFICATION) -->
+    <!-- PAGE 03: DETAILS / DRESS CODE -->
     <div id="details-page" class="editorial-page bg-[#FFFDF8] text-[#173F35] pt-28 px-6 md:px-12 flex flex-col justify-center">
         <div class="max-w-5xl mx-auto w-full py-12">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -441,7 +446,90 @@
         </div>
     </div>
 
-    <!-- PAGE 04: MOMENTS PHOTO ESSAY (SIDE-BY-SIDE CONTROLS & UNCLIPPED FULL PICTURE VIEW) -->
+    <!-- PAGE 04: WEDDING ENTOURAGE (NEW SECTION) -->
+    <div id="entourage-page" class="editorial-page bg-[#F7F4E9] text-[#173F35] pt-28 px-6 md:px-12">
+        <div class="max-w-6xl mx-auto py-10">
+            
+            <div class="text-center mb-12 border-b border-[#173F35]/15 pb-8">
+                <span class="text-xs tracking-[0.35em] text-[#356B50] uppercase font-semibold block mb-2">WEDDING PARTY</span>
+                <h2 class="text-5xl md:text-7xl font-serif-editorial font-light tracking-tight uppercase">THE ENTOURAGE</h2>
+                <p class="text-xs tracking-[0.2em] uppercase text-[#B69A62] font-semibold mt-3">STANDING BESIDE US AS WE BEGIN OUR NEXT CHAPTER</p>
+            </div>
+
+            <!-- Parents Panel -->
+            <div class="bg-[#173F35] text-[#FFFDF8] p-8 md:p-12 mb-10 shadow-xl">
+                <span class="text-[10px] tracking-[0.3em] uppercase text-[#B69A62] font-bold block mb-6 text-center">PARENTS OF THE COUPLE</span>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+                    <div class="border-r-0 md:border-r border-[#FFFDF8]/15 pr-0 md:pr-8">
+                        <span class="text-xs tracking-widest text-[#B69A62] uppercase block mb-3 font-medium">PARENTS OF THE BRIDE</span>
+                        <p class="font-serif-editorial text-2xl md:text-3xl font-light">Mr. Gabriel Santos</p>
+                        <p class="font-serif-editorial text-2xl md:text-3xl font-light mt-1">Mrs. Victoria Santos</p>
+                    </div>
+                    <div class="pl-0 md:pl-8">
+                        <span class="text-xs tracking-widest text-[#B69A62] uppercase block mb-3 font-medium">PARENTS OF THE GROOM</span>
+                        <p class="font-serif-editorial text-2xl md:text-3xl font-light">Mr. Eduardo Reyes</p>
+                        <p class="font-serif-editorial text-2xl md:text-3xl font-light mt-1">Mrs. Isabella Reyes</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Honors Panel: Maid of Honor & Best Man -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                <div class="bg-[#FFFDF8] border border-[#173F35]/15 p-8 text-center shadow-md">
+                    <span class="text-[10px] tracking-[0.3em] uppercase text-[#356B50] font-bold block mb-3">MAID OF HONOR</span>
+                    <h3 class="font-serif-editorial text-3xl md:text-4xl text-[#173F35]">Camille Santos</h3>
+                    <p class="text-[11px] tracking-widest text-[#B69A62] uppercase mt-2 font-medium">Sister of the Bride</p>
+                </div>
+                <div class="bg-[#FFFDF8] border border-[#173F35]/15 p-8 text-center shadow-md">
+                    <span class="text-[10px] tracking-[0.3em] uppercase text-[#356B50] font-bold block mb-3">BEST MAN</span>
+                    <h3 class="font-serif-editorial text-3xl md:text-4xl text-[#173F35]">Lucas Reyes</h3>
+                    <p class="text-[11px] tracking-widest text-[#B69A62] uppercase mt-2 font-medium">Brother of the Groom</p>
+                </div>
+            </div>
+
+            <!-- Principal Sponsors Panel -->
+            <div class="bg-[#FFFDF8] border border-[#173F35]/15 p-8 md:p-12 mb-10 shadow-md">
+                <span class="text-[10px] tracking-[0.3em] uppercase text-[#356B50] font-bold block mb-6 text-center">PRINCIPAL SPONSORS</span>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 text-center font-serif-editorial text-xl md:text-2xl text-[#173F35]/90">
+                    <div class="space-y-2">
+                        <p>Atty. Fernando Cruz & Dr. Teresa Cruz</p>
+                        <p>Engr. Roberto Mendoza & Mrs. Carmen Mendoza</p>
+                        <p>Mr. Alexander Tan & Mrs. Sophia Tan</p>
+                    </div>
+                    <div class="space-y-2">
+                        <p>Mr. Benjamin Garcia & Mrs. Patricia Cruz-Garcia</p>
+                        <p>Dr. Ricardo Dela Rosa & Atty. Maria Dela Rosa</p>
+                        <p>Engr. Daniel Soriano & Dr. Elaine Soriano</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bridesmaids & Groomsmen Panel -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-[#173F35] text-[#FFFDF8] p-8 md:p-10 shadow-lg">
+                    <span class="text-[10px] tracking-[0.3em] uppercase text-[#B69A62] font-bold block mb-6 text-center">BRIDESMAIDS</span>
+                    <div class="space-y-3 text-center font-serif-editorial text-2xl font-light">
+                        <p>Sophia Alonzo</p>
+                        <p>Beatrice Villanueva</p>
+                        <p>Isla Valenzuela</p>
+                        <p>Charlotte Navarro</p>
+                    </div>
+                </div>
+                <div class="bg-[#173F35] text-[#FFFDF8] p-8 md:p-10 shadow-lg">
+                    <span class="text-[10px] tracking-[0.3em] uppercase text-[#B69A62] font-bold block mb-6 text-center">GROOMSMEN</span>
+                    <div class="space-y-3 text-center font-serif-editorial text-2xl font-light">
+                        <p>Julian Mercado</p>
+                        <p>Mateo Castillo</p>
+                        <p>Dominic Fernandez</p>
+                        <p>Zachary Ocampo</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- PAGE 05: MOMENTS PHOTO ESSAY -->
     <div id="moments-page" class="editorial-page bg-[#173F35] text-[#FFFDF8] pt-28 px-6 md:px-12 flex flex-col justify-center">
         <div class="max-w-6xl mx-auto w-full py-4">
             <div class="text-center mb-6">
@@ -538,7 +626,7 @@
         </div>
     </div>
 
-    <!-- PAGE 05: RSVP WITH QR CODE ONLY -->
+    <!-- PAGE 06: RSVP WITH QR CODE ONLY -->
     <div id="rsvp-page" class="editorial-page bg-[#173F35] text-[#FFFDF8] pt-28 px-6 md:px-12 flex flex-col justify-center items-center">
         <div class="max-w-xl mx-auto w-full py-8 text-center space-y-6">
             <div class="space-y-2">
@@ -651,6 +739,7 @@
                 'story-page': 'nav-story',
                 'day-page': 'nav-day',
                 'details-page': 'nav-details',
+                'entourage-page': 'nav-entourage',
                 'moments-page': 'nav-moments',
                 'rsvp-page': 'nav-rsvp'
             };
