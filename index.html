@@ -124,7 +124,7 @@
         <source src="song.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- EDITORIAL FIXED NAVIGATION BAR (MATCHES SCREENSHOT EXACTLY) -->
+    <!-- EDITORIAL FIXED NAVIGATION BAR -->
     <nav id="main-nav" class="fixed top-0 left-0 w-full z-50 px-4 md:px-12 py-3 md:py-5 flex justify-between items-center transition-all duration-500 backdrop-blur-md bg-[#F7F4E9]/90 text-[#173F35] border-b border-[#173F35]/10 shadow-sm">
         <div class="flex items-center space-x-3 md:space-x-6">
             <a href="javascript:void(0)" onclick="navigateToPage('cover-page')" class="font-serif-editorial text-lg md:text-xl font-bold tracking-widest uppercase hover:opacity-70 transition-opacity pr-2 md:pr-4 border-r border-[#173F35]/20">
@@ -148,7 +148,7 @@
             <button onclick="navigateToPage('rsvp-page')" id="nav-rsvp" class="px-5 py-2 border border-[#173F35] hover:bg-[#173F35] hover:text-[#FFFDF8] transition-all duration-300 focus:outline-none">RSVP</button>
         </div>
 
-        <!-- Mobile Menu Toggle Button (Bordered Box) -->
+        <!-- Mobile Menu Toggle Button -->
         <button id="mobile-menu-btn" class="lg:hidden text-[10px] tracking-[0.2em] uppercase font-semibold focus:outline-none py-1 px-3 border border-[#173F35]">
             MENU
         </button>
@@ -193,10 +193,10 @@
         </div>
     </div>
 
-    <!-- PAGE 00: OPENING COVER (SPECIFIC MOBILE LAYOUT) -->
-    <div id="cover-page" class="editorial-page active-page bg-[#F7F4E9] text-[#173F35] flex flex-col justify-between p-0 pt-14 lg:p-16 lg:pt-32">
+    <!-- PAGE 00: OPENING COVER (MOVED UP "THE WEDDING") -->
+    <div id="cover-page" class="editorial-page active-page bg-[#F7F4E9] text-[#173F35] flex flex-col justify-between p-0 pt-12 lg:p-12 lg:pt-20">
         
-        <!-- Mobile Specific Layout (Replicating Screenshot Layout) -->
+        <!-- Mobile Specific Layout -->
         <div class="lg:hidden flex flex-col min-h-screen justify-between pb-8">
             <!-- Full Width Top Hero Photo -->
             <div class="w-full h-[45vh] relative overflow-hidden bg-[#173F35]">
@@ -207,7 +207,7 @@
             </div>
 
             <!-- Centered Editorial Text Block -->
-            <div class="px-6 py-6 text-center space-y-4 my-auto">
+            <div class="px-6 py-4 text-center space-y-3 my-auto">
                 <span class="text-[11px] tracking-[0.25em] font-medium text-[#173F35] uppercase block">THE WEDDING</span>
                 
                 <h1 class="text-5xl font-serif-editorial tracking-tight font-normal text-[#173F35] leading-none">
@@ -218,11 +218,11 @@
                     A Love Story, One Cup at a Time
                 </p>
 
-                <p class="text-[10px] tracking-[0.25em] text-[#173F35]/80 font-medium uppercase pt-2">
+                <p class="text-[10px] tracking-[0.25em] text-[#173F35]/80 font-medium uppercase pt-1">
                     SATURDAY, JANUARY 31, 2028 • MANILA
                 </p>
 
-                <div class="pt-4 px-2">
+                <div class="pt-3 px-2">
                     <button onclick="startInvitationExperience()" class="w-full inline-flex items-center justify-center space-x-3 bg-[#173F35] text-[#FFFDF8] py-4 text-xs tracking-[0.2em] uppercase font-medium focus:outline-none shadow-md">
                         <span>EXPLORE THE WEDDING</span>
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
@@ -231,11 +231,11 @@
             </div>
         </div>
 
-        <!-- Desktop Original Editorial Layout -->
+        <!-- Desktop Layout (Moved Up "THE WEDDING") -->
         <div class="hidden lg:flex flex-col h-full justify-between">
-            <div class="w-full border-b border-[#173F35]/20 pb-4 flex justify-between items-end mt-2">
+            <div class="w-full border-b border-[#173F35]/20 pb-3 flex justify-between items-end mt-4">
                 <div>
-                    <h1 class="text-8xl font-serif-editorial font-light tracking-tight leading-none mt-2">
+                    <h1 class="text-7xl font-serif-editorial font-light tracking-tight leading-none">
                         THE WEDDING
                     </h1>
                 </div>
@@ -245,27 +245,27 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-12 gap-8 my-auto items-center py-8">
-                <div class="col-span-5 space-y-6 z-10">
-                    <div class="inline-block border-l-2 border-[#173F35] pl-4 py-1">
+            <div class="grid grid-cols-12 gap-8 my-auto items-center py-4">
+                <div class="col-span-5 space-y-5 z-10">
+                    <div class="inline-block border-l-2 border-[#173F35] pl-4 py-0.5">
                         <p class="text-xs uppercase tracking-[0.25em] font-semibold text-[#356B50]">A DIGITAL PUBLICATION</p>
                     </div>
 
                     <div class="space-y-0">
-                        <h2 class="text-9xl font-serif-editorial tracking-tighter leading-none italic font-normal">
+                        <h2 class="text-8xl font-serif-editorial tracking-tighter leading-none italic font-normal">
                             Elena
                         </h2>
                         <p class="text-2xl font-serif-editorial font-light tracking-widest my-[-10px] pl-12 text-[#B69A62]">&</p>
-                        <h2 class="text-9xl font-serif-editorial tracking-tighter leading-none pl-16 font-normal">
+                        <h2 class="text-8xl font-serif-editorial tracking-tighter leading-none pl-16 font-normal">
                             Adrian
                         </h2>
                     </div>
 
-                    <p class="text-base font-serif-editorial italic text-[#173F35]/80 max-w-sm pt-4 border-t border-[#173F35]/10">
+                    <p class="text-base font-serif-editorial italic text-[#173F35]/80 max-w-sm pt-3 border-t border-[#173F35]/10">
                         "A Love Story, One Cup at a Time"
                     </p>
 
-                    <div class="pt-4">
+                    <div class="pt-2">
                         <button onclick="startInvitationExperience()" class="inline-flex items-center space-x-4 bg-[#173F35] text-[#FFFDF8] px-8 py-4 hover:bg-[#356B50] transition-all duration-300 text-xs tracking-[0.25em] uppercase font-medium group cursor-pointer shadow-lg focus:outline-none">
                             <span>EXPLORE INVITATION</span>
                             <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -280,7 +280,7 @@
                         <img src="intro.jpeg"
                              onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1200';"
                              alt="Elena & Adrian Cover Image"
-                             class="w-full h-[500px] object-cover object-center filter contrast-105">
+                             class="w-full h-[460px] object-cover object-center filter contrast-105">
 
                         <div class="absolute bottom-6 left-6 bg-[#173F35]/90 text-[#FFFDF8] backdrop-blur-md p-4 max-w-xs border border-[#FFFDF8]/20">
                             <p class="text-[9px] tracking-[0.3em] text-[#B69A62] uppercase font-semibold">COVER FEATURE</p>
@@ -291,7 +291,7 @@
                 </div>
             </div>
 
-            <div class="w-full border-t border-[#173F35]/20 pt-4 pb-2 flex justify-between items-center text-xs tracking-[0.2em] uppercase text-[#173F35]/70">
+            <div class="w-full border-t border-[#173F35]/20 pt-3 pb-2 flex justify-between items-center text-xs tracking-[0.2em] uppercase text-[#173F35]/70">
                 <div>VOLUME 01 • ISSUE 2028</div>
                 <div class="text-[#356B50] font-medium">CLICK 'EXPLORE INVITATION' OR MENU TO NAVIGATE</div>
             </div>
@@ -334,7 +334,7 @@
             </div>
         </section>
 
-        <!-- 02 — PROPOSAL (ACTS AS DIVIDER BEFORE PROPOSAL.JPEG) -->
+        <!-- 02 — PROPOSAL -->
         <section class="py-16 md:py-24 px-6 md:px-12 max-w-6xl mx-auto bg-[#F7F4E9] text-[#173F35]">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div class="lg:col-span-12 space-y-6">
