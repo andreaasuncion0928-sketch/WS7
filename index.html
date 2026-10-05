@@ -429,87 +429,99 @@
         </div>
     </div>
 
-    <!-- PAGE 04: MOMENTS PHOTO ESSAY (FIXED FLIP STACKING: 1ST - 10TH.JPEG) -->
+    <!-- PAGE 04: MOMENTS PHOTO ESSAY (SIDE-BY-SIDE CONTROLS & UNCLIPPED FULL PICTURE VIEW) -->
     <div id="moments-page" class="editorial-page bg-[#173F35] text-[#FFFDF8] pt-28 px-6 md:px-12 flex flex-col justify-center">
-        <div class="max-w-4xl mx-auto w-full py-8">
-            <div class="text-center mb-8">
+        <div class="max-w-6xl mx-auto w-full py-4">
+            <div class="text-center mb-6">
                 <span class="text-xs tracking-[0.3em] text-[#B69A62] uppercase font-semibold block mb-1">05 — VISUAL CHRONICLE</span>
                 <h2 class="text-4xl md:text-5xl font-serif-editorial font-light text-[#FFFDF8]">MOMENTS</h2>
+                <p id="page-counter" class="text-xs tracking-[0.2em] text-[#B69A62] font-semibold uppercase mt-1">COVER</p>
             </div>
 
-            <!-- Book Container -->
-            <div class="book-container relative w-full h-[450px] md:h-[520px] max-w-2xl mx-auto bg-[#356B50] border border-[#FFFDF8]/20">
+            <!-- Side-By-Side Layout (Previous Button — Book — Next Button) -->
+            <div class="flex items-center justify-center gap-4 md:gap-8">
+                
+                <!-- Side Left Controls (Previous Page) -->
+                <button id="prev-page-btn" onclick="flipPrevPage()" class="hidden sm:flex flex-col items-center justify-center p-4 text-xs tracking-[0.2em] uppercase text-[#FFFDF8]/70 hover:text-[#B69A62] transition-colors focus:outline-none group">
+                    <span class="text-2xl group-hover:-translate-x-1 transition-transform mb-1">←</span>
+                    <span class="text-[10px]">PREV PAGE</span>
+                </button>
 
-                <!-- Page 10 (10th.jpeg - Base Layer, Z-Index 1) -->
-                <div id="book-page-10" class="book-page bg-[#FFFDF8] p-4 text-[#173F35]" style="z-index: 1;">
-                    <img src="10th.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800';" alt="10th Moment" class="w-full h-full object-cover">
+                <!-- Book Container (Full Picture Aspect Ratio Preserved) -->
+                <div class="book-container relative w-full h-[520px] md:h-[600px] max-w-3xl bg-[#173F35] border border-[#FFFDF8]/20 shadow-2xl">
+
+                    <!-- Page 10 (10th.jpeg) -->
+                    <div id="book-page-10" class="book-page bg-[#FFFDF8] p-2 md:p-4 text-[#173F35] flex items-center justify-center" style="z-index: 1;">
+                        <img src="10th.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800';" alt="10th Moment" class="w-full h-full object-contain">
+                    </div>
+
+                    <!-- Page 9 (9th.jpeg) -->
+                    <div id="book-page-9" class="book-page bg-[#FFFDF8] p-2 md:p-4 text-[#173F35] flex items-center justify-center" style="z-index: 2;">
+                        <img src="9th.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=800';" alt="9th Moment" class="w-full h-full object-contain">
+                    </div>
+
+                    <!-- Page 8 (8th.jpeg) -->
+                    <div id="book-page-8" class="book-page bg-[#FFFDF8] p-2 md:p-4 text-[#173F35] flex items-center justify-center" style="z-index: 3;">
+                        <img src="8th.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&q=80&w=800';" alt="8th Moment" class="w-full h-full object-contain">
+                    </div>
+
+                    <!-- Page 7 (7th.jpeg) -->
+                    <div id="book-page-7" class="book-page bg-[#FFFDF8] p-2 md:p-4 text-[#173F35] flex items-center justify-center" style="z-index: 4;">
+                        <img src="7th.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=80&w=800';" alt="7th Moment" class="w-full h-full object-contain">
+                    </div>
+
+                    <!-- Page 6 (6th.jpeg) -->
+                    <div id="book-page-6" class="book-page bg-[#FFFDF8] p-2 md:p-4 text-[#173F35] flex items-center justify-center" style="z-index: 5;">
+                        <img src="6th.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&q=80&w=800';" alt="6th Moment" class="w-full h-full object-contain">
+                    </div>
+
+                    <!-- Page 5 (5th.jpeg) -->
+                    <div id="book-page-5" class="book-page bg-[#FFFDF8] p-2 md:p-4 text-[#173F35] flex items-center justify-center" style="z-index: 6;">
+                        <img src="5th.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&q=80&w=800';" alt="5th Moment" class="w-full h-full object-contain">
+                    </div>
+
+                    <!-- Page 4 (4th.jpeg) -->
+                    <div id="book-page-4" class="book-page bg-[#FFFDF8] p-2 md:p-4 text-[#173F35] flex items-center justify-center" style="z-index: 7;">
+                        <img src="4th.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=800';" alt="4th Moment" class="w-full h-full object-contain">
+                    </div>
+
+                    <!-- Page 3 (3rd.jpeg) -->
+                    <div id="book-page-3" class="book-page bg-[#FFFDF8] p-2 md:p-4 text-[#173F35] flex items-center justify-center" style="z-index: 8;">
+                        <img src="3rd.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&q=80&w=800';" alt="3rd Moment" class="w-full h-full object-contain">
+                    </div>
+
+                    <!-- Page 2 (2nd.jpeg) -->
+                    <div id="book-page-2" class="book-page bg-[#FFFDF8] p-2 md:p-4 text-[#173F35] flex items-center justify-center" style="z-index: 9;">
+                        <img src="2nd.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=800';" alt="2nd Moment" class="w-full h-full object-contain">
+                    </div>
+
+                    <!-- Page 1 (1st.jpeg) -->
+                    <div id="book-page-1" class="book-page bg-[#FFFDF8] p-2 md:p-4 text-[#173F35] flex items-center justify-center" style="z-index: 10;">
+                        <img src="1st.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800';" alt="1st Moment" class="w-full h-full object-contain">
+                    </div>
+
+                    <!-- Book Cover Page (Top Layer, Z-Index 20) -->
+                    <div id="book-page-0" class="book-page bg-[#173F35] flex flex-col justify-center items-center text-center p-8 border-r-2 border-[#B69A62]/40" style="z-index: 20;">
+                        <span class="text-xs tracking-[0.35em] text-[#B69A62] uppercase mb-4">THE GREEN EDITORIAL</span>
+                        <h3 class="text-5xl font-serif-editorial italic text-[#FFFDF8] mb-4">Our Love Story</h3>
+                        <div class="w-16 h-[1px] bg-[#B69A62] my-4"></div>
+                        <p class="text-xs tracking-[0.2em] uppercase text-[#FFFDF8]/70">Elena & Adrian • Volume I</p>
+                        <p class="text-[10px] tracking-widest text-[#B69A62] uppercase mt-8 animate-pulse">CLICK 'NEXT PAGE' ON THE RIGHT TO OPEN</p>
+                    </div>
+
                 </div>
 
-                <!-- Page 9 (9th.jpeg) -->
-                <div id="book-page-9" class="book-page bg-[#FFFDF8] p-4 text-[#173F35]" style="z-index: 2;">
-                    <img src="9th.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=800';" alt="9th Moment" class="w-full h-full object-cover">
-                </div>
-
-                <!-- Page 8 (8th.jpeg) -->
-                <div id="book-page-8" class="book-page bg-[#FFFDF8] p-4 text-[#173F35]" style="z-index: 3;">
-                    <img src="8th.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&q=80&w=800';" alt="8th Moment" class="w-full h-full object-cover">
-                </div>
-
-                <!-- Page 7 (7th.jpeg) -->
-                <div id="book-page-7" class="book-page bg-[#FFFDF8] p-4 text-[#173F35]" style="z-index: 4;">
-                    <img src="7th.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=80&w=800';" alt="7th Moment" class="w-full h-full object-cover">
-                </div>
-
-                <!-- Page 6 (6th.jpeg) -->
-                <div id="book-page-6" class="book-page bg-[#FFFDF8] p-4 text-[#173F35]" style="z-index: 5;">
-                    <img src="6th.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&q=80&w=800';" alt="6th Moment" class="w-full h-full object-cover">
-                </div>
-
-                <!-- Page 5 (5th.jpeg) -->
-                <div id="book-page-5" class="book-page bg-[#FFFDF8] p-4 text-[#173F35]" style="z-index: 6;">
-                    <img src="5th.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&q=80&w=800';" alt="5th Moment" class="w-full h-full object-cover">
-                </div>
-
-                <!-- Page 4 (4th.jpeg) -->
-                <div id="book-page-4" class="book-page bg-[#FFFDF8] p-4 text-[#173F35]" style="z-index: 7;">
-                    <img src="4th.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=800';" alt="4th Moment" class="w-full h-full object-cover">
-                </div>
-
-                <!-- Page 3 (3rd.jpeg) -->
-                <div id="book-page-3" class="book-page bg-[#FFFDF8] p-4 text-[#173F35]" style="z-index: 8;">
-                    <img src="3rd.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&q=80&w=800';" alt="3rd Moment" class="w-full h-full object-cover">
-                </div>
-
-                <!-- Page 2 (2nd.jpeg) -->
-                <div id="book-page-2" class="book-page bg-[#FFFDF8] p-4 text-[#173F35]" style="z-index: 9;">
-                    <img src="2nd.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=800';" alt="2nd Moment" class="w-full h-full object-cover">
-                </div>
-
-                <!-- Page 1 (1st.jpeg) -->
-                <div id="book-page-1" class="book-page bg-[#FFFDF8] p-4 text-[#173F35]" style="z-index: 10;">
-                    <img src="1st.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800';" alt="1st Moment" class="w-full h-full object-cover">
-                </div>
-
-                <!-- Book Cover Page (Top Layer, Z-Index 20) -->
-                <div id="book-page-0" class="book-page bg-[#173F35] flex flex-col justify-center items-center text-center p-8 border-r-2 border-[#B69A62]/40" style="z-index: 20;">
-                    <span class="text-xs tracking-[0.35em] text-[#B69A62] uppercase mb-4">THE GREEN EDITORIAL</span>
-                    <h3 class="text-5xl font-serif-editorial italic text-[#FFFDF8] mb-4">Our Love Story</h3>
-                    <div class="w-16 h-[1px] bg-[#B69A62] my-4"></div>
-                    <p class="text-xs tracking-[0.2em] uppercase text-[#FFFDF8]/70">Elena & Adrian • Volume I</p>
-                    <p class="text-[10px] tracking-widest text-[#B69A62] uppercase mt-8 animate-pulse">CLICK 'NEXT PAGE' TO OPEN</p>
-                </div>
-
+                <!-- Side Right Controls (Next Page) -->
+                <button id="next-page-btn" onclick="flipNextPage()" class="hidden sm:flex flex-col items-center justify-center p-4 text-xs tracking-[0.2em] uppercase text-[#FFFDF8]/70 hover:text-[#B69A62] transition-colors focus:outline-none group">
+                    <span class="text-2xl group-hover:translate-x-1 transition-transform mb-1">→</span>
+                    <span class="text-[10px]">NEXT PAGE</span>
+                </button>
             </div>
 
-            <!-- Book Controls -->
-            <div class="flex justify-between items-center max-w-2xl mx-auto mt-6 px-4">
-                <button id="prev-page-btn" onclick="flipPrevPage()" class="text-xs tracking-[0.25em] uppercase text-[#FFFDF8]/70 hover:text-[#B69A62] transition-colors focus:outline-none">
-                    ← PREVIOUS PAGE
-                </button>
-                <span id="page-counter" class="text-xs tracking-widest text-[#B69A62] font-semibold">COVER</span>
-                <button id="next-page-btn" onclick="flipNextPage()" class="text-xs tracking-[0.25em] uppercase text-[#FFFDF8]/70 hover:text-[#B69A62] transition-colors focus:outline-none">
-                    NEXT PAGE →
-                </button>
+            <!-- Mobile Navigation Fallback Controls -->
+            <div class="flex sm:hidden justify-between items-center max-w-2xl mx-auto mt-4 px-4">
+                <button onclick="flipPrevPage()" class="text-xs tracking-[0.2em] uppercase text-[#FFFDF8]/70 focus:outline-none">← PREV</button>
+                <button onclick="flipNextPage()" class="text-xs tracking-[0.2em] uppercase text-[#B69A62] font-semibold focus:outline-none">NEXT →</button>
             </div>
         </div>
     </div>
