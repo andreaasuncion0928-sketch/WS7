@@ -82,9 +82,9 @@
             width: 100%;
         }
 
-        /* 3D BOOK FLIP ANIMATION STYLES */
+        /* FIXED 3D BOOK FLIP ANIMATION STYLES */
         .book-container {
-            perspective: 1500px;
+            perspective: 2000px;
         }
 
         .book-page {
@@ -95,8 +95,10 @@
             left: 0;
             transform-origin: left center;
             transform-style: preserve-3d;
-            transition: transform 0.9s cubic-bezier(0.645, 0.045, 0.355, 1);
+            transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
             backface-visibility: hidden;
+            border-radius: 2px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
         }
 
         .book-page.flipped {
@@ -308,8 +310,7 @@
                 <p class="text-xs md:text-sm font-light text-[#FFFDF8]/80 max-w-xl mx-auto">
                     Now, we are beginning our next chapter — and we would love to celebrate it with the people who have been part of our story.
                 </p>
-                
-                <!-- Unobtrusive, minimal transition text -->
+
                 <div class="pt-6">
                     <span class="text-[10px] tracking-[0.25em] text-[#FFFDF8]/40 uppercase font-light">Select <button onclick="navigateToPage('day-page')" class="underline hover:text-[#B69A62] transition-colors">THE DAY</button> in menu to proceed</span>
                 </div>
@@ -329,7 +330,7 @@
                 </div>
             </div>
 
-            <!-- Green Venue Cards Without White Lines -->
+            <!-- Green Venue Cards -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
                 <div class="bg-[#173F35] text-[#FFFDF8] p-8 md:p-10 relative flex flex-col justify-between">
                     <div>
@@ -390,7 +391,7 @@
         </div>
     </div>
 
-    <!-- PAGE 03: DETAILS / DRESS CODE (UPDATED TO WHITE AND GREEN PALETTE) -->
+    <!-- PAGE 03: DETAILS / DRESS CODE (GREEN AND WHITE PALETTE SPECIFICATION) -->
     <div id="details-page" class="editorial-page bg-[#FFFDF8] text-[#173F35] pt-28 px-6 md:px-12 flex flex-col justify-center">
         <div class="max-w-5xl mx-auto w-full py-12">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -404,29 +405,31 @@
                 <div class="lg:col-span-7 bg-[#F7F4E9] p-8 md:p-12 border border-[#173F35]/10 space-y-6">
                     <div>
                         <span class="text-xs tracking-[0.25em] text-[#356B50] font-bold block uppercase">PALETTE GUIDELINE</span>
-                        <h3 class="text-4xl font-serif-editorial font-bold text-[#582C4D] tracking-wider mt-1">PURPLE</h3>
+                        <h3 class="text-4xl font-serif-editorial font-bold text-[#173F35] tracking-wider mt-1">GREEN & WHITE</h3>
                     </div>
 
                     <p class="text-sm text-[#173F35]/90 font-light leading-relaxed">
-                        Guests are encouraged to wear purple. Preferred shades range from:
+                        Guests are encouraged to wear green and white attire. Preferred shades range from deep forest tones down to soft ivory:
                     </p>
 
+                    <!-- Shades Spectrum (Green to White) -->
                     <div class="flex items-center space-x-2 py-2">
-                        <div class="flex-1 h-10 bg-[#E6E6FA] flex items-center justify-center text-[9px] font-semibold text-[#173F35]">LAVENDER</div>
-                        <div class="flex-1 h-10 bg-[#9370DB] flex items-center justify-center text-[9px] font-semibold text-white">LILAC</div>
-                        <div class="flex-1 h-10 bg-[#800080] flex items-center justify-center text-[9px] font-semibold text-white">PURPLE</div>
-                        <div class="flex-1 h-10 bg-[#8E4585] flex items-center justify-center text-[9px] font-semibold text-white">PLUM</div>
+                        <div class="flex-1 h-10 bg-[#173F35] flex items-center justify-center text-[9px] font-semibold text-[#FFFDF8]">FOREST</div>
+                        <div class="flex-1 h-10 bg-[#356B50] flex items-center justify-center text-[9px] font-semibold text-[#FFFDF8]">MALACHITE</div>
+                        <div class="flex-1 h-10 bg-[#8AA899] flex items-center justify-center text-[9px] font-semibold text-[#173F35]">SAGE</div>
+                        <div class="flex-1 h-10 bg-[#F7F4E9] border border-[#173F35]/20 flex items-center justify-center text-[9px] font-semibold text-[#173F35]">IVORY</div>
+                        <div class="flex-1 h-10 bg-[#FFFDF8] border border-[#173F35]/20 flex items-center justify-center text-[9px] font-semibold text-[#173F35]">WHITE</div>
                     </div>
 
                     <p class="text-xs text-[#173F35]/70 italic pt-2 border-t border-[#173F35]/10">
-                        Formal attire requested. Gentlemen in dark suits or formal barong with purple subtle accents, ladies in floor-length or cocktail gowns within the purple palette spectrum.
+                        Formal editorial attire requested. Gentlemen in dark suits, formal barong, or green/white accents; ladies in floor-length or cocktail gowns within the green and white spectrum.
                     </p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- PAGE 04: MOMENTS PHOTO ESSAY (INTERACTIVE GREEN BOOK FLIP WITH 1ST - 7TH.JPEG) -->
+    <!-- PAGE 04: MOMENTS PHOTO ESSAY (FIXED FLIP STACKING: 1ST - 10TH.JPEG) -->
     <div id="moments-page" class="editorial-page bg-[#173F35] text-[#FFFDF8] pt-28 px-6 md:px-12 flex flex-col justify-center">
         <div class="max-w-4xl mx-auto w-full py-8">
             <div class="text-center mb-8">
@@ -435,10 +438,60 @@
             </div>
 
             <!-- Book Container -->
-            <div class="book-container relative w-full h-[450px] md:h-[520px] max-w-2xl mx-auto shadow-2xl border border-[#FFFDF8]/20 bg-[#356B50]">
-                
-                <!-- Book Cover Page -->
-                <div id="book-page-0" class="book-page z-40 bg-[#173F35] flex flex-col justify-center items-center text-center p-8 border-r-2 border-[#B69A62]/40">
+            <div class="book-container relative w-full h-[450px] md:h-[520px] max-w-2xl mx-auto bg-[#356B50] border border-[#FFFDF8]/20">
+
+                <!-- Page 10 (10th.jpeg - Base Layer, Z-Index 1) -->
+                <div id="book-page-10" class="book-page bg-[#FFFDF8] p-4 text-[#173F35]" style="z-index: 1;">
+                    <img src="10th.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800';" alt="10th Moment" class="w-full h-full object-cover">
+                </div>
+
+                <!-- Page 9 (9th.jpeg) -->
+                <div id="book-page-9" class="book-page bg-[#FFFDF8] p-4 text-[#173F35]" style="z-index: 2;">
+                    <img src="9th.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=800';" alt="9th Moment" class="w-full h-full object-cover">
+                </div>
+
+                <!-- Page 8 (8th.jpeg) -->
+                <div id="book-page-8" class="book-page bg-[#FFFDF8] p-4 text-[#173F35]" style="z-index: 3;">
+                    <img src="8th.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&q=80&w=800';" alt="8th Moment" class="w-full h-full object-cover">
+                </div>
+
+                <!-- Page 7 (7th.jpeg) -->
+                <div id="book-page-7" class="book-page bg-[#FFFDF8] p-4 text-[#173F35]" style="z-index: 4;">
+                    <img src="7th.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=80&w=800';" alt="7th Moment" class="w-full h-full object-cover">
+                </div>
+
+                <!-- Page 6 (6th.jpeg) -->
+                <div id="book-page-6" class="book-page bg-[#FFFDF8] p-4 text-[#173F35]" style="z-index: 5;">
+                    <img src="6th.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&q=80&w=800';" alt="6th Moment" class="w-full h-full object-cover">
+                </div>
+
+                <!-- Page 5 (5th.jpeg) -->
+                <div id="book-page-5" class="book-page bg-[#FFFDF8] p-4 text-[#173F35]" style="z-index: 6;">
+                    <img src="5th.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&q=80&w=800';" alt="5th Moment" class="w-full h-full object-cover">
+                </div>
+
+                <!-- Page 4 (4th.jpeg) -->
+                <div id="book-page-4" class="book-page bg-[#FFFDF8] p-4 text-[#173F35]" style="z-index: 7;">
+                    <img src="4th.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=800';" alt="4th Moment" class="w-full h-full object-cover">
+                </div>
+
+                <!-- Page 3 (3rd.jpeg) -->
+                <div id="book-page-3" class="book-page bg-[#FFFDF8] p-4 text-[#173F35]" style="z-index: 8;">
+                    <img src="3rd.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&q=80&w=800';" alt="3rd Moment" class="w-full h-full object-cover">
+                </div>
+
+                <!-- Page 2 (2nd.jpeg) -->
+                <div id="book-page-2" class="book-page bg-[#FFFDF8] p-4 text-[#173F35]" style="z-index: 9;">
+                    <img src="2nd.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=800';" alt="2nd Moment" class="w-full h-full object-cover">
+                </div>
+
+                <!-- Page 1 (1st.jpeg) -->
+                <div id="book-page-1" class="book-page bg-[#FFFDF8] p-4 text-[#173F35]" style="z-index: 10;">
+                    <img src="1st.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800';" alt="1st Moment" class="w-full h-full object-cover">
+                </div>
+
+                <!-- Book Cover Page (Top Layer, Z-Index 20) -->
+                <div id="book-page-0" class="book-page bg-[#173F35] flex flex-col justify-center items-center text-center p-8 border-r-2 border-[#B69A62]/40" style="z-index: 20;">
                     <span class="text-xs tracking-[0.35em] text-[#B69A62] uppercase mb-4">THE GREEN EDITORIAL</span>
                     <h3 class="text-5xl font-serif-editorial italic text-[#FFFDF8] mb-4">Our Love Story</h3>
                     <div class="w-16 h-[1px] bg-[#B69A62] my-4"></div>
@@ -446,40 +499,6 @@
                     <p class="text-[10px] tracking-widest text-[#B69A62] uppercase mt-8 animate-pulse">CLICK 'NEXT PAGE' TO OPEN</p>
                 </div>
 
-                <!-- Page 1 (1st.jpeg) -->
-                <div id="book-page-1" class="book-page z-30 bg-[#FFFDF8] p-4 text-[#173F35]">
-                    <img src="1st.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800';" alt="1st Moment" class="w-full h-full object-cover filter contrast-105">
-                </div>
-
-                <!-- Page 2 (2nd.jpeg) -->
-                <div id="book-page-2" class="book-page z-25 bg-[#FFFDF8] p-4 text-[#173F35]">
-                    <img src="2nd.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=800';" alt="2nd Moment" class="w-full h-full object-cover filter contrast-105">
-                </div>
-
-                <!-- Page 3 (3rd.jpeg) -->
-                <div id="book-page-3" class="book-page z-20 bg-[#FFFDF8] p-4 text-[#173F35]">
-                    <img src="3rd.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&q=80&w=800';" alt="3rd Moment" class="w-full h-full object-cover filter contrast-105">
-                </div>
-
-                <!-- Page 4 (4th.jpeg) -->
-                <div id="book-page-4" class="book-page z-15 bg-[#FFFDF8] p-4 text-[#173F35]">
-                    <img src="4th.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=80&w=800';" alt="4th Moment" class="w-full h-full object-cover filter contrast-105">
-                </div>
-
-                <!-- Page 5 (5th.jpeg) -->
-                <div id="book-page-5" class="book-page z-10 bg-[#FFFDF8] p-4 text-[#173F35]">
-                    <img src="5th.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&q=80&w=800';" alt="5th Moment" class="w-full h-full object-cover filter contrast-105">
-                </div>
-
-                <!-- Page 6 (6th.jpeg) -->
-                <div id="book-page-6" class="book-page z-5 bg-[#FFFDF8] p-4 text-[#173F35]">
-                    <img src="6th.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&q=80&w=800';" alt="6th Moment" class="w-full h-full object-cover filter contrast-105">
-                </div>
-
-                <!-- Page 7 (7th.jpeg - Final) -->
-                <div id="book-page-7" class="book-page z-1 bg-[#FFFDF8] p-4 text-[#173F35]">
-                    <img src="7th.jpeg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=800';" alt="7th Moment" class="w-full h-full object-cover filter contrast-105">
-                </div>
             </div>
 
             <!-- Book Controls -->
@@ -495,61 +514,29 @@
         </div>
     </div>
 
-    <!-- PAGE 05: RSVP WITH QR CODE INTEGRATION -->
-    <div id="rsvp-page" class="editorial-page bg-[#173F35] text-[#FFFDF8] pt-28 px-6 md:px-12 flex flex-col justify-center">
-        <div class="max-w-3xl mx-auto w-full py-8">
-            <div class="text-center space-y-2 mb-6">
+    <!-- PAGE 05: RSVP WITH QR CODE ONLY (FORM REMOVED) -->
+    <div id="rsvp-page" class="editorial-page bg-[#173F35] text-[#FFFDF8] pt-28 px-6 md:px-12 flex flex-col justify-center items-center">
+        <div class="max-w-xl mx-auto w-full py-8 text-center space-y-6">
+            <div class="space-y-2">
                 <span class="text-xs tracking-[0.35em] text-[#B69A62] uppercase font-semibold block">06 — ATTENDANCE CONFIRMATION</span>
-                <h2 class="text-4xl md:text-5xl font-serif-editorial font-light">WILL YOU JOIN US?</h2>
+                <h2 class="text-4xl md:text-6xl font-serif-editorial font-light">WILL YOU JOIN US?</h2>
                 <p class="text-xs tracking-[0.2em] text-[#B69A62] uppercase">PLEASE CONFIRM BY DECEMBER 15, 2027</p>
             </div>
 
-            <!-- RSVP Form Container -->
-            <div class="bg-[#173F35] border border-[#FFFDF8]/20 p-6 md:p-8 space-y-6">
-                
-                <!-- QR Code Display Banner -->
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-6 bg-[#356B50]/30 p-4 border border-[#FFFDF8]/10 text-center sm:text-left">
-                    <img src="sampleQR.png" onerror="this.onerror=null; this.src='https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=ElenaAndAdrianWeddingRSVP';" alt="RSVP QR Code" class="w-24 h-24 object-contain bg-white p-2 border border-[#FFFDF8]/20">
-                    <div>
-                        <span class="text-[10px] tracking-[0.25em] text-[#B69A62] uppercase font-semibold block">DIGITAL RSVP SCAN</span>
-                        <p class="text-xs text-[#FFFDF8]/80 font-light mt-1">Scan this QR code with your mobile camera to confirm on your device or fill in the invitation form below.</p>
-                    </div>
+            <!-- QR Code Display Banner -->
+            <div class="bg-[#356B50]/30 p-8 border border-[#FFFDF8]/20 space-y-6 flex flex-col items-center shadow-2xl">
+                <img src="sampleQR.png" onerror="this.onerror=null; this.src='https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=ElenaAndAdrianWeddingRSVP';" alt="RSVP QR Code" class="w-64 h-64 object-contain bg-white p-4 border border-[#FFFDF8]/30 shadow-md">
+                <div class="space-y-2">
+                    <span class="text-xs tracking-[0.25em] text-[#B69A62] uppercase font-semibold block">SCAN TO CONFIRM ATTENDANCE</span>
+                    <p class="text-xs text-[#FFFDF8]/80 font-light max-w-md mx-auto leading-relaxed">
+                        Please scan the QR code above using your smartphone camera to access our digital attendance confirmation portal.
+                    </p>
                 </div>
-
-                <form id="rsvp-form" class="space-y-4">
-                    <div>
-                        <label class="block text-xs tracking-[0.2em] uppercase text-[#FFFDF8]/80 mb-1">FULL NAME(S) *</label>
-                        <input type="text" required placeholder="e.g. Mr. Alexander Wright & Guest" class="w-full bg-transparent border-b border-[#FFFDF8]/40 py-2 text-sm text-[#FFFDF8] focus:outline-none focus:border-[#B69A62]">
-                    </div>
-
-                    <div>
-                        <label class="block text-xs tracking-[0.2em] uppercase text-[#FFFDF8]/80 mb-1">EMAIL ADDRESS *</label>
-                        <input type="email" required placeholder="alexander@example.com" class="w-full bg-transparent border-b border-[#FFFDF8]/40 py-2 text-sm text-[#FFFDF8] focus:outline-none focus:border-[#B69A62]">
-                    </div>
-
-                    <div class="pt-2">
-                        <label class="block text-xs tracking-[0.2em] uppercase text-[#FFFDF8]/80 mb-2">ATTENDANCE STATUS *</label>
-                        <div class="grid grid-cols-2 gap-4">
-                            <label class="flex items-center space-x-2 p-3 border border-[#FFFDF8]/20 text-xs cursor-pointer hover:border-[#B69A62]">
-                                <input type="radio" name="attendance" value="accept" checked class="accent-[#B69A62]">
-                                <span>JOYFULLY ACCEPTS</span>
-                            </label>
-                            <label class="flex items-center space-x-2 p-3 border border-[#FFFDF8]/20 text-xs cursor-pointer hover:border-[#B69A62]">
-                                <input type="radio" name="attendance" value="decline" class="accent-[#B69A62]">
-                                <span>REGRETFULLY DECLINES</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="w-full bg-[#FFFDF8] text-[#173F35] hover:bg-[#B69A62] hover:text-[#FFFDF8] py-4 transition-colors text-xs tracking-[0.3em] uppercase font-semibold mt-4">
-                        CONFIRM ATTENDANCE
-                    </button>
-                </form>
             </div>
         </div>
     </div>
 
-    <!-- JAVASCRIPT NAVIGATION & INTERACTIVE BOOK FLIP LOGIC -->
+    <!-- JAVASCRIPT NAVIGATION & INTERACTIVE STACK FLIP LOGIC -->
     <script>
         // Page switching navigation function
         function navigateToPage(pageId) {
@@ -585,9 +572,9 @@
             closeMobileMenu();
         }
 
-        // Book Flip Logic (0 = Cover, 1 to 7 = Images)
+        // Corrected Book Flip Logic (0 = Cover, 1 to 10 = Images)
         let currentBookPage = 0;
-        const totalBookPages = 7;
+        const totalBookPages = 10;
 
         function updateBookState() {
             for (let i = 0; i <= totalBookPages; i++) {
@@ -640,15 +627,6 @@
 
         if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileMenu);
         if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileMenu);
-
-        // RSVP Form Confirmation
-        const rsvpForm = document.getElementById('rsvp-form');
-        if (rsvpForm) {
-            rsvpForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Thank you! Your attendance response has been recorded.');
-            });
-        }
     </script>
 </body>
 </html>
