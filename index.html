@@ -119,7 +119,7 @@
 </head>
 <body class="antialiased selection:bg-[#356B50] selection:text-[#FFFDF8]">
 
-    <!-- AUDIO ELEMENT FOR BACKGROUND MUSIC (INSTANT AUDIO PRELOAD) -->
+    <!-- AUDIO ELEMENT FOR BACKGROUND MUSIC (SONG.MP3) -->
     <audio id="bg-audio" loop preload="auto">
         <source src="song.mp3" type="audio/mpeg">
     </audio>
@@ -555,8 +555,8 @@
 
     <!-- JAVASCRIPT NAVIGATION & AUDIO LOGIC -->
     <script>
-        // Adjust this seconds value if you want to skip further into the song (e.g. 3.5 = 3.5 seconds)
-        const AUDIO_START_OFFSET = 3.5;
+        // Start audio offset set to 12.0 seconds (skips instrumental intro straight to "In the morning..." lyrics)
+        const AUDIO_START_OFFSET = 12.0;
 
         // Page switching navigation function
         function navigateToPage(pageId) {
@@ -597,7 +597,7 @@
             const audio = document.getElementById('bg-audio');
             if (audio) {
                 try {
-                    audio.currentTime = AUDIO_START_OFFSET; // Jump intro instrumental straight to lyrics
+                    audio.currentTime = AUDIO_START_OFFSET;
                 } catch(e) {
                     console.log('Audio seek before play');
                 }
