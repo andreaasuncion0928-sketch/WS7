@@ -124,11 +124,19 @@
         <source src="song.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- EDITORIAL FIXED NAVIGATION BAR -->
-    <nav id="main-nav" class="fixed top-0 left-0 w-full z-50 px-6 py-5 md:px-12 md:py-6 flex justify-between items-center transition-all duration-500 backdrop-blur-md bg-[#F7F4E9]/80 text-[#173F35] border-b border-[#173F35]/10">
-        <a href="javascript:void(0)" onclick="navigateToPage('cover-page')" class="font-serif-editorial text-xl font-bold tracking-widest uppercase hover:opacity-70 transition-opacity">
-            E & A
-        </a>
+    <!-- EDITORIAL FIXED NAVIGATION BAR WITH PLAY OUR SONG BUTTON -->
+    <nav id="main-nav" class="fixed top-0 left-0 w-full z-50 px-6 py-4 md:px-12 md:py-5 flex justify-between items-center transition-all duration-500 backdrop-blur-md bg-[#F7F4E9]/80 text-[#173F35] border-b border-[#173F35]/10">
+        <div class="flex items-center space-x-6">
+            <a href="javascript:void(0)" onclick="navigateToPage('cover-page')" class="font-serif-editorial text-xl font-bold tracking-widest uppercase hover:opacity-70 transition-opacity">
+                E & A
+            </a>
+
+            <!-- Play Our Song Header Button -->
+            <button id="header-play-song-btn" onclick="playOurSongManual()" class="inline-flex items-center space-x-2 border border-[#173F35] px-3 py-1 text-[10px] tracking-[0.2em] uppercase font-semibold hover:bg-[#173F35] hover:text-[#FFFDF8] transition-all duration-300 focus:outline-none">
+                <span id="header-play-icon">🎵</span>
+                <span id="header-play-text">PLAY OUR SONG</span>
+            </button>
+        </div>
 
         <!-- Desktop Navigation Items -->
         <div class="hidden md:flex items-center space-x-8 text-xs font-medium tracking-[0.2em] uppercase">
@@ -180,7 +188,7 @@
         </div>
     </div>
 
-    <!-- PAGE 00: OPENING COVER (RESTORED ORIGINAL EDITORIAL LAYOUT) -->
+    <!-- PAGE 00: OPENING COVER -->
     <div id="cover-page" class="editorial-page active-page bg-[#F7F4E9] text-[#173F35] flex flex-col justify-between p-6 md:p-12 lg:p-16 pt-28">
         <div class="w-full border-b border-[#173F35]/20 pb-4 flex justify-between items-end">
             <div>
@@ -555,8 +563,77 @@
 
     <!-- JAVASCRIPT NAVIGATION & AUDIO LOGIC -->
     <script>
-        // Start audio offset set to 12.0 seconds (skips instrumental intro straight to "In the morning..." lyrics)
-        const AUDIO_START_OFFSET = 12.0;
+        // Track whether guest manually clicked "PLAY OUR SONG" in header
+        let isSongManuallyTriggered = false;
+
+        // Start audio offset set to 18.0 seconds (jumps straight into "In the morning..." lyrics)
+        const LYRIC_START_OFFSET = 18.0;
+
+        // Smooth Audio Fade-In Helper Function
+        function playAudioWithFadeIn(audio, startOffset = 0) {
+            try {
+                audio.currentTime = startOffset;
+            } catch(e) {
+                console.log('Audio seek error:', e);
+            }
+            
+            audio.volume = 0.0;
+            const playPromise = audio.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    let vol = 0.0;
+                    const fadeInterval = setInterval(() => {
+                        if (vol < 0.9) {
+                            vol += 0.1;
+                            audio.volume = Math.min(1.0, vol);
+                        } else {
+                            audio.volume = 1.0;
+                            clearInterval(fadeInterval);
+                        }
+                    }, 100);
+                }).catch(err => {
+                    console.log('Audio playback prevented by browser:', err);
+                });
+            }
+        }
+
+        // Manual Trigger: Click "PLAY OUR SONG" in header
+        function playOurSongManual() {
+            const audio = document.getElementById('bg-audio');
+            const playBtnText = document.getElementById('header-play-text');
+            const playBtnIcon = document.getElementById('header-play-icon');
+
+            if (!audio) return;
+
+            if (audio.paused) {
+                isSongManuallyTriggered = true; // Mark as manually playing
+                playAudioWithFadeIn(audio, 0); // Play full song from beginning
+                if (playBtnText) playBtnText.textContent = "PAUSE SONG";
+                if (playBtnIcon) playBtnIcon.textContent = "🔊";
+            } else {
+                audio.pause();
+                if (playBtnText) playBtnText.textContent = "PLAY OUR SONG";
+                if (playBtnIcon) playBtnIcon.textContent = "🎵";
+            }
+        }
+
+        // "EXPLORE INVITATION" Entry Action
+        function startInvitationExperience() {
+            const audio = document.getElementById('bg-audio');
+            
+            // Only trigger music if guest HAS NOT already clicked "PLAY OUR SONG"
+            if (!isSongManuallyTriggered && audio && audio.paused) {
+                playAudioWithFadeIn(audio, LYRIC_START_OFFSET); // Skip instrumental, jump to 0:18 lyrics with fade-in
+                
+                const playBtnText = document.getElementById('header-play-text');
+                const playBtnIcon = document.getElementById('header-play-icon');
+                if (playBtnText) playBtnText.textContent = "PAUSE SONG";
+                if (playBtnIcon) playBtnIcon.textContent = "🔊";
+            }
+
+            navigateToPage('story-page');
+        }
 
         // Page switching navigation function
         function navigateToPage(pageId) {
@@ -590,23 +667,6 @@
             }
 
             closeMobileMenu();
-        }
-
-        // Start Experience & Play Background Audio Instantly
-        function startInvitationExperience() {
-            const audio = document.getElementById('bg-audio');
-            if (audio) {
-                try {
-                    audio.currentTime = AUDIO_START_OFFSET;
-                } catch(e) {
-                    console.log('Audio seek before play');
-                }
-                
-                audio.play().catch(err => {
-                    console.log('Audio playback prevented by browser:', err);
-                });
-            }
-            navigateToPage('story-page');
         }
 
         // Corrected Book Flip Logic (0 = Cover, 1 to 10 = Images)
