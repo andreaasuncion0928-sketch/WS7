@@ -193,36 +193,41 @@
         </div>
     </div>
 
-    <!-- PAGE 00: OPENING COVER (BALANCED MOBILE LAYOUT WITH HARMONIOUS PROPORTIONS) -->
-    <div id="cover-page" class="editorial-page active-page bg-[#F7F4E9] text-[#173F35] flex flex-col justify-between p-0 pt-12 lg:p-12 lg:pt-20">
+    <!-- PAGE 00: OPENING COVER -->
+    <div id="cover-page" class="editorial-page active-page bg-[#F7F4E9] text-[#173F35] flex flex-col justify-between p-0 pt-14 lg:p-12 lg:pt-20">
         
-        <!-- Mobile Specific Layout (Balanced Vertical Rhythms & Even Spacing) -->
-        <div class="lg:hidden flex flex-col h-[calc(100vh-3rem)] justify-between pb-6">
-            <!-- Full Width Top Hero Photo -->
-            <div class="w-full h-[40vh] shrink-0 relative overflow-hidden bg-[#173F35]">
+        <!-- Mobile Specific Layout -->
+        <div class="lg:hidden flex flex-col h-[calc(100vh-3.5rem)] justify-between pb-6 pt-2">
+            <!-- 1. THE WEDDING TITLE AT TOP -->
+            <div class="px-6 text-center py-2 shrink-0 border-b border-[#173F35]/10 mx-4">
+                <h1 class="text-xs tracking-[0.35em] font-semibold text-[#173F35] uppercase">
+                    THE WEDDING
+                </h1>
+            </div>
+
+            <!-- 2. PROPOSAL / COVER IMAGE -->
+            <div class="w-full h-[36vh] shrink-0 relative overflow-hidden bg-[#173F35] my-auto border-y border-[#173F35]/10">
                 <img src="intro.jpeg"
                      onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1200';"
                      alt="Elena & Adrian Wedding Cover"
                      class="w-full h-full object-cover object-center filter contrast-105">
             </div>
 
-            <!-- Centered Editorial Text Block (Harmoniously Spaced) -->
-            <div class="px-6 py-6 text-center my-auto flex flex-col justify-center space-y-4">
-                <span class="text-[11px] tracking-[0.25em] font-semibold text-[#173F35] uppercase block">THE WEDDING</span>
-                
-                <h1 class="text-4xl sm:text-5xl font-serif-editorial tracking-tight font-normal text-[#173F35] leading-none py-1">
-                    Elena <span class="font-serif-editorial italic font-light text-[#B69A62] text-3xl mx-1">&</span> Adrian
-                </h1>
+            <!-- 3. NAMES, TAGLINE, DATE & CTA BUTTON BELOW IMAGE -->
+            <div class="px-6 text-center my-auto flex flex-col justify-center space-y-3 shrink-0">
+                <h2 class="text-5xl font-serif-editorial tracking-tight font-normal text-[#173F35] leading-none">
+                    Elena <span class="font-serif-editorial italic font-light text-[#B69A62] text-4xl mx-0.5">&</span> Adrian
+                </h2>
 
-                <p class="text-xs font-serif-editorial italic text-[#173F35]/80">
+                <p class="text-sm font-serif-editorial italic text-[#173F35]/80">
                     A Love Story, One Cup at a Time
                 </p>
 
-                <p class="text-[10px] tracking-[0.25em] text-[#173F35]/80 font-semibold uppercase pt-1">
+                <p class="text-[10px] tracking-[0.25em] text-[#173F35]/80 font-semibold uppercase pt-0.5">
                     SATURDAY, JANUARY 31, 2028 • MANILA
                 </p>
 
-                <div class="pt-3 px-2">
+                <div class="pt-2 px-2">
                     <button onclick="startInvitationExperience()" class="w-full inline-flex items-center justify-center space-x-2.5 bg-[#173F35] text-[#FFFDF8] py-3.5 text-[11px] tracking-[0.2em] uppercase font-medium focus:outline-none shadow-md">
                         <span>EXPLORE THE WEDDING</span>
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
@@ -685,9 +690,10 @@
     <!-- JAVASCRIPT NAVIGATION & AUDIO LOGIC -->
     <script>
         let isSongManuallyTriggered = false;
-        const LYRIC_START_OFFSET = 18.0;
+        // Configured to start at 10 seconds (0:10)
+        const LYRIC_START_OFFSET = 10.0;
 
-        function playAudioWithFadeIn(audio, startOffset = 18.0) {
+        function playAudioWithFadeIn(audio, startOffset = 10.0) {
             try {
                 audio.currentTime = startOffset;
             } catch(e) {
