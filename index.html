@@ -124,8 +124,8 @@
         <source src="song.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- EDITORIAL FIXED NAVIGATION BAR WITH PLAY OUR SONG BUTTON -->
-    <nav id="main-nav" class="fixed top-0 left-0 w-full z-50 px-6 py-4 md:px-12 md:py-5 flex justify-between items-center transition-all duration-500 backdrop-blur-md bg-[#F7F4E9]/80 text-[#173F35] border-b border-[#173F35]/10">
+    <!-- EDITORIAL FIXED NAVIGATION BAR -->
+    <nav id="main-nav" class="fixed top-0 left-0 w-full z-50 px-6 py-4 md:px-12 md:py-5 flex justify-between items-center transition-all duration-500 backdrop-blur-md bg-[#F7F4E9]/90 text-[#173F35] border-b border-[#173F35]/10 shadow-sm">
         <div class="flex items-center space-x-6">
             <a href="javascript:void(0)" onclick="navigateToPage('cover-page')" class="font-serif-editorial text-xl font-bold tracking-widest uppercase hover:opacity-70 transition-opacity">
                 E & A
@@ -188,12 +188,12 @@
         </div>
     </div>
 
-    <!-- PAGE 00: OPENING COVER -->
-    <div id="cover-page" class="editorial-page active-page bg-[#F7F4E9] text-[#173F35] flex flex-col justify-between p-6 md:p-12 lg:p-16 pt-28">
-        <div class="w-full border-b border-[#173F35]/20 pb-4 flex justify-between items-end">
+    <!-- PAGE 00: OPENING COVER (CLEANED UP TOP PADDING TO ELIMINATE OVERLAP) -->
+    <div id="cover-page" class="editorial-page active-page bg-[#F7F4E9] text-[#173F35] flex flex-col justify-between p-6 md:p-12 lg:p-16 pt-32 md:pt-36">
+        <div class="w-full border-b border-[#173F35]/20 pb-4 flex justify-between items-end mt-2">
             <div>
                 <p class="text-[10px] md:text-xs font-medium tracking-[0.3em] uppercase text-[#356B50]">THE GREEN EDITORIAL • SPECIAL INVITATION ISSUE</p>
-                <h1 class="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-serif-editorial font-light tracking-tight leading-none mt-1">
+                <h1 class="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-serif-editorial font-light tracking-tight leading-none mt-2">
                     THE WEDDING
                 </h1>
             </div>
@@ -570,7 +570,7 @@
         const LYRIC_START_OFFSET = 18.0;
 
         // Smooth Audio Fade-In Helper Function
-        function playAudioWithFadeIn(audio, startOffset = 0) {
+        function playAudioWithFadeIn(audio, startOffset = 18.0) {
             try {
                 audio.currentTime = startOffset;
             } catch(e) {
@@ -598,7 +598,7 @@
             }
         }
 
-        // Manual Trigger: Click "PLAY OUR SONG" in header
+        // Manual Trigger: Click "PLAY OUR SONG" in header (Starts at 0:18 with Fade-In)
         function playOurSongManual() {
             const audio = document.getElementById('bg-audio');
             const playBtnText = document.getElementById('header-play-text');
@@ -608,7 +608,7 @@
 
             if (audio.paused) {
                 isSongManuallyTriggered = true; // Mark as manually playing
-                playAudioWithFadeIn(audio, 0); // Play full song from beginning
+                playAudioWithFadeIn(audio, LYRIC_START_OFFSET); // Starts at 0:18 with fade-in
                 if (playBtnText) playBtnText.textContent = "PAUSE SONG";
                 if (playBtnIcon) playBtnIcon.textContent = "🔊";
             } else {
@@ -624,7 +624,7 @@
             
             // Only trigger music if guest HAS NOT already clicked "PLAY OUR SONG"
             if (!isSongManuallyTriggered && audio && audio.paused) {
-                playAudioWithFadeIn(audio, LYRIC_START_OFFSET); // Skip instrumental, jump to 0:18 lyrics with fade-in
+                playAudioWithFadeIn(audio, LYRIC_START_OFFSET); // Starts at 0:18 with fade-in
                 
                 const playBtnText = document.getElementById('header-play-text');
                 const playBtnIcon = document.getElementById('header-play-icon');
